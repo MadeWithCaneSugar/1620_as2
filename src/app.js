@@ -12,7 +12,8 @@ const addNoteButton = document.querySelector(".fa-circle-plus")
 const textBox = `<textarea id="textArea" cols="30" rows="10"></textarea>`
 const saveButton = `<button class="saveButton">save</button>`
 const cancelButton = `<button class="cancelButton">cancel</button>`
-const sideBar = document.querySelector("notes-list")
+const sideBar = document.querySelector(".notes-list")
+const noteListItem = `<li id="noteListItem"></li>`
 
 //overarching function for (+) button and contains sub-functions for (cancel) and (save) buttons
 function noteFunction() {
@@ -34,6 +35,12 @@ function noteFunction() {
       notebody: textBoxContent,
       id: notes.length + 1
     })
+    //add note title to sidebar
+    sideBar.insertAdjacentHTML("beforeend", noteListItem)
+    let theNote = sideBar.querySelector("#noteListItem").innerHTML = textBoxContentList[0]
+    theNote = document.getElementById("noteListItem")
+    theNote.id = notes.length
+    //noteListItem.appendChild(thisThing)
     //removing everything
     textArea.remove()
     cancelNoteButton.remove()
