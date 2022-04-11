@@ -7,13 +7,14 @@ const notes = [
 ]
 
 //defining the areas used in this code in order based roughly around when they're used
-const newNoteArea = document.querySelector(".create-note-area")
+const newNoteArea = document.querySelector(".note-area")
 const addNoteButton = document.querySelector(".fa-circle-plus")
 const textBox = `<textarea id="textArea" cols="30" rows="10"></textarea>`
 const saveButton = `<button class="saveButton">save</button>`
 const cancelButton = `<button class="cancelButton">cancel</button>`
 const sideBar = document.querySelector(".notes-list")
 const noteListItem = `<li id="noteListItem"></li>`
+const noteViewArea = document.querySelector(".read-note-area")
 
 //overarching function for (+) button and contains sub-functions for (cancel) and (save) buttons
 function noteFunction() {
@@ -40,14 +41,14 @@ function noteFunction() {
     let theNote = sideBar.querySelector("#noteListItem").innerHTML = textBoxContentList[0]
     theNote = document.getElementById("noteListItem")
     theNote.id = notes.length
-    //noteListItem.appendChild(thisThing)
     //removing everything
     textArea.remove()
     cancelNoteButton.remove()
     saveNoteButton.remove()
     //re-enabling the (+) when the (save) button is clicked
     addNoteButton.addEventListener("click", noteFunction)
-    console.log(notes)
+    //running the sidemenu function each time the save button is clicekd to update the notes
+    makeNotesClickable()
   })
 
   //functionality for the (cancel) button
@@ -64,3 +65,14 @@ function noteFunction() {
 
 //adding the functionality to the (+) button
 addNoteButton.addEventListener("click", noteFunction)
+
+//adding functionality to the notes on the side menu
+function makeNotesClickable(){
+  let currentNote = document.getElementById(notes.length)
+  currentNote.addEventListener("click", (evt) => {
+    console.log("this is the note you clicked (don't forget about the sample note being 1): " + currentNote.id)
+    let currentNoteDict = (notes[currentNote.id - 1])
+    noteViewArea.innerHTML = currentNoteDict.notebody
+    console.log(currentNoteDict)
+  })
+}
