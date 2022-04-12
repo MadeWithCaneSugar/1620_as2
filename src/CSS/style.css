@@ -134,3 +134,53 @@ footer p {
   color: var(--text);
   font-size: var(--lrg-txt);
 }
+
+.note-container-main  {
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 500px
+}
+
+.notes-list {
+  width: 100px;
+  overflow-wrap: break-word;
+}
+
+.note-area  {
+  display: flex;
+  flex-direction: column;
+}
+
+#textArea {
+  background-color: var(--drk-white);
+  height: 250px;
+  width: 250px;
+  margin: 2px;
+  font-size: large;
+}
+
+button  {
+  color: var(--not-white);
+  background-color: var(--not-black);
+  border-color: var(--not-black);
+  width: 40px;
+  height: 20px;
+  margin: 2px;
+}
+
+h1  {
+  margin: 20px;
+}
+
+.read-note-area {
+  background-color: var(--drk-white);
+  width: 500px;
+  overflow-wrap: break-word;
+}
+
+.theNote  {
+  padding: 20px;
+}
+

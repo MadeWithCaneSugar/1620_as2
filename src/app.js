@@ -9,7 +9,7 @@ const notes = [
 //defining the areas used in this code in order based roughly around when they're used
 const newNoteArea = document.querySelector(".note-area")
 const addNoteButton = document.querySelector(".fa-circle-plus")
-const textBox = `<textarea id="textArea" cols="30" rows="10"></textarea>`
+const textBox = `<textarea id="textArea"></textarea>`
 const saveButton = `<button class="saveButton">save</button>`
 const cancelButton = `<button class="cancelButton">cancel</button>`
 const sideBar = document.querySelector(".notes-list")
