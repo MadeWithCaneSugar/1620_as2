@@ -15,6 +15,8 @@ const cancelButton = `<button class="cancelButton">cancel</button>`
 const sideBar = document.querySelector(".notes-list")
 const noteListItem = `<li id="noteListItem"></li>`
 const noteViewArea = document.querySelector(".read-note-area")
+const noteViewTitle = `<h1 id="theTitle"></h1>`
+const noteViewShell = `<p id="theNote"></p>`
 
 //overarching function for (+) button and contains sub-functions for (cancel) and (save) buttons
 function noteFunction() {
@@ -33,7 +35,7 @@ function noteFunction() {
     let textBoxContentList = textBoxContent.split("\n")
     notes.push({
       title: textBoxContentList[0],
-      notebody: textBoxContent,
+      noteBody: textBoxContent,
       id: notes.length + 1
     })
     //add note title to sidebar
@@ -61,18 +63,36 @@ function noteFunction() {
     //re-enabling the (+) when the (cancel) button is clicked
     addNoteButton.addEventListener("click", noteFunction)
   })
+
+  //changing functionality based on whether or not there is currently a note being read
+  //this portion fo the code is a result of me being unable to add a functional (close) button
+  //to close the note being read when clicked. This alternative closes the current note when a
+  //new note area is spawned
+  console.log(document.querySelector("#theTitle"))
+  if (document.querySelector("#theTitle") != null) {
+    console.log("Valid Query")
+    theNote.remove()
+    theTitle.remove()
+  }
+  else {
+    console.log("Null Query")
+  }
 }
+//you could say the most sublte (close) button is one that's invisible, but still easy to find 🤔
 
 //adding the functionality to the (+) button
 addNoteButton.addEventListener("click", noteFunction)
 
 //adding functionality to the notes on the side menu
-function makeNotesClickable(){
+function makeNotesClickable() {
   let currentNote = document.getElementById(notes.length)
   currentNote.addEventListener("click", (evt) => {
-    console.log("this is the note you clicked (don't forget about the sample note being 1): " + currentNote.id)
     let currentNoteDict = (notes[currentNote.id - 1])
-    noteViewArea.innerHTML = currentNoteDict.notebody
     console.log(currentNoteDict)
+    noteViewArea.insertAdjacentHTML("beforeend", noteViewTitle)
+    theTitle.textContent = currentNoteDict.title
+    noteViewArea.insertAdjacentHTML("beforeend", noteViewShell)
+    theNote.textContent = currentNoteDict.noteBody
   })
 }
+//cursors: pointer
